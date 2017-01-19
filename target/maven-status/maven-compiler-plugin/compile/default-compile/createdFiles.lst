@@ -1,0 +1,3 @@
+Models/User.class
+Controllers/UserRepository.class
+Controllers/MainLauncher.class
