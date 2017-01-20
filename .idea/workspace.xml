@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7fa7c2c-2fdb-41aa-b46f-bc14f398bbd7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rssfeedaggregatorapi.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/.mvn/wrapper/maven-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/.mvn/wrapper/maven-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/mvnw" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/mvnw.cmd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/main/java/com/epitech/FeedrssApplication.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/main/java/com/epitech/RssController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/main/java/com/epitech/TestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/main/java/com/epitech/UserController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/main/resources/application.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feedrss/src/test/java/com/epitech/FeedrssApplicationTests.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="327">
-              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+              <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -95,9 +101,9 @@
         <option value="$PROJECT_DIR$/src/main/java/SpringMongoConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/epitech/Entities/SpringMongoConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/epitech/SpringMongoConfig.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/epitech/FeedrssApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -673,23 +679,16 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="FeedrssApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.epitech.FeedrssApplication" />
-      <module name="feedrss" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="MainLauncher" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="Controllers.MainLauncher" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <module name="rssfeedaggregatorapi" />
       <envs />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Spring Boot.FeedrssApplication" />
-      <item index="1" class="java.lang.String" itemvalue="Spring Boot.MainLauncher" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Spring Boot.MainLauncher" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -706,12 +705,12 @@
       <workItem from="1483781626601" duration="1912000" />
       <workItem from="1483785262117" duration="5046000" />
       <workItem from="1484603754996" duration="8621000" />
-      <workItem from="1484909446106" duration="62000" />
+      <workItem from="1484909446106" duration="207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15933000" />
+    <option name="totallyTimeSpent" value="16078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="1104" width="1855" height="1056" extended-state="6" />
@@ -882,7 +881,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding />
         </state>
       </provider>
