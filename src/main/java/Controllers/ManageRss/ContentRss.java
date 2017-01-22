@@ -1,10 +1,8 @@
 package Controllers.ManageRss;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,9 +20,6 @@ public class ContentRss {
 	String author;
 	@JsonView(ViewRss.Summary.class)
 	String description;
-//	@JsonView(ViewRss.Summary.class)
-//	Date createdDate;
-
 	@JsonView(ViewRss.Summary.class)
 	String titleImage;
 	@JsonView(ViewRss.Summary.class)

@@ -4,11 +4,9 @@ import Controllers.ManageRss.ContentRss;
 import Controllers.ManageRss.RssReader;
 import Models.Rss;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,73 +17,54 @@ import java.util.List;
 public class RssController {
 
 	@Autowired
-	RssRepository rssRepository;
+	private RssRepository rssRepository;
 
-/*	@ResponseBody
-	@RequestMapping("/rssflux")
-	public List<Rss> rssFluxList() {
-		List<String> rss = rssRepository.findAll().toString();
-	}*/
-
-/*	@ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "/rss", method = RequestMethod.GET)
-	ModelAndView getFeedInRss() {
-
-		System.out.println("getFeedInRss");
-
-		List<ContentRss> items = new ArrayList<ContentRss>();
-
-		ContentRss content  = new ContentRss();
-		content.setTitle("Spring MVC Tutorial 1");
-		content.setUrl("http://www.mkyong.com/spring-mvc/tutorial-1");
-		content.setSummary("Tutorial 1 summary ...");
-		content.setCreatedDate(new Date());
-		items.add(content);
-
-		ContentRss content2  = new ContentRss();
-		content2.setTitle("Spring MVC Tutorial 2");
-		content2.setUrl("http://www.mkyong.com/spring-mvc/tutorial-2");
-		content2.setSummary("Tutorial 2 summary ...");
-		content2.setCreatedDate(new Date());
-		items.add(content2);
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("rssViewer");
-		mav.addObject("feedContent", items);
-
-
-		return mav;
-
-	}*/
-
+	List<Rss> getFeedInRss() {
+		return rssRepository.findAll();
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/rss/{id}", method = RequestMethod.GET)
 	ContentRss getFeedInRss(@PathVariable String id) {
-
-
 		RssReader rssReader = new RssReader();
-		ContentRss response = rssReader.loadRss(rssRepository.findById(id).getUrl());
-		return response;
+		return rssReader.loadRss(rssRepository.findById(id).getUrl());
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/listflux", method = RequestMethod.GET)
-	public String rssFluxList() {
-		String response = "{listflux:{";
-
-		List<Rss> listRss = rssRepository.findAll();
-		for (Rss rss : listRss) {
-			System.out.println(rss.toString());
-			response += rss.toString() + ",";
-		}
-
-		response += "}}";
-
-
-
-		return response;
+	@RequestMapping(value = "/rss", method = RequestMethod.POST)
+	Rss addFeedInRss(@RequestBody Rss rss) {
+		rssRepository.save(rss);
+		return rss;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/rss/{id}", method = RequestMethod.PUT)
+	String updateFeedInRss(@PathVariable String id, @RequestBody Rss newRss) {
+		if (newRss != null) {
+			Rss rss = rssRepository.findOne(id);
+			if (newRss.getUrl() != null) {
+				rss.setUrl(newRss.getUrl());
+			}
+			if (newRss.getTitle() != null) {
+				rss.setTitle(newRss.getTitle());
+			}
+			if (newRss.getComment() != null) {
+				rss.setComment(newRss.getComment());
+			}
+			rssRepository.save(rss);
+			return "{ success:true }";
+		}
+		return "{ success:false }";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/rss/{id}", method = RequestMethod.DELETE)
+	String removeFeedInRss(@PathVariable String id) {
+		return "{ success:"
+				+ (rssRepository.deleteById(id) == 1 ? "true" : "false")
+				+ "}";
+	}
 
 }

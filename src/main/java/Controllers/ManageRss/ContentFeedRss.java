@@ -1,37 +1,50 @@
 package Controllers.ManageRss;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.sun.syndication.feed.synd.SyndEnclosureImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by flatch on 22/01/17.
  */
 public class ContentFeedRss {
 	@JsonView(ViewRss.Summary.class)
-	String title;
+	private String title;
 	@JsonView(ViewRss.Summary.class)
-	String description;
+	private String description;
 	@JsonView(ViewRss.Summary.class)
-	String author;
+	private String author;
 	@JsonView(ViewRss.Summary.class)
-	String url;
+	private String url;
 	@JsonView(ViewRss.Summary.class)
-	String urlImage;
+	private String urlImage;
 	@JsonView(ViewRss.Summary.class)
-	Date publishedDate;
+	private Date publishedDate;
 
 	public static ContentFeedRss fromSyndEntry(SyndEntry feedEntry) {
+		String imageUrl = null;
+		List<SyndEnclosureImpl> enclosures =
+				(List) feedEntry.getEnclosures();
+		if (enclosures != null){
+			for (SyndEnclosureImpl enclosure : enclosures){
+				if (enclosure != null){
+					imageUrl = enclosure.getUrl();
+					break;
+				}
+			}
+		}
 		return new ContentFeedRss(feedEntry.getTitle(),
 				feedEntry.getDescription().getValue(),
 				feedEntry.getLink(),
-				"http://blog-mastere2-rp-events.ecs-paris.com/wp-content/uploads/2014/04/poney-rose-300x224.jpg",
+				imageUrl,
 				feedEntry.getAuthor(),
 				feedEntry.getPublishedDate());
 	}
 
-	ContentFeedRss(String title, String description,
+	public ContentFeedRss(String title, String description,
 				   String url, String urlImage,
 				   String author, Date publishedDate) {
 		this.title = title;
@@ -41,7 +54,6 @@ public class ContentFeedRss {
 		this.author = author;
 		this.publishedDate = publishedDate;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -65,5 +77,29 @@ public class ContentFeedRss {
 
 	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
 	}
 }

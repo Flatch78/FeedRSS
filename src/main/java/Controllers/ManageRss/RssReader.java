@@ -11,20 +11,16 @@ import com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 import com.sun.syndication.io.FeedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
-import org.springframework.context.MessageSourceResolvable;
-import org.springframework.context.NoSuchMessageException;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by flatch on 22/01/17.
  */
-public class RssReader implements MessageSource {
+public class RssReader  {
 	private static Logger logger = LoggerFactory.getLogger(RssReader.class);
 	private FeedFetcherCache feedInfoCache;
 	private FeedFetcher feedFetcher;
@@ -69,9 +65,6 @@ public class RssReader implements MessageSource {
 
 		syndFeed.getModules();
 
-//		MessageBuilder.withPayload(feed)
-//				.setHeader("feedid", "gridshore").build();
-
 		ContentRss contentRss = ContentRss.fromSyndEntry(syndFeed);
 		List<ContentFeedRss> feedrss = new ArrayList<ContentFeedRss>();
 		List<SyndEntry> entries = syndFeed.getEntries();
@@ -83,19 +76,4 @@ public class RssReader implements MessageSource {
 		return contentRss;
 	}
 
-
-	@Override
-	public String getMessage(String s, Object[] objects, String s1, Locale locale) {
-		return null;
-	}
-
-	@Override
-	public String getMessage(String s, Object[] objects, Locale locale) throws NoSuchMessageException {
-		return null;
-	}
-
-	@Override
-	public String getMessage(MessageSourceResolvable messageSourceResolvable, Locale locale) throws NoSuchMessageException {
-		return null;
-	}
 }

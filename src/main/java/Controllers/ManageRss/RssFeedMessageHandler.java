@@ -1,10 +1,5 @@
 package Controllers.ManageRss;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Date;
-
 /**
  * Created by flatch on 22/01/17.
  */

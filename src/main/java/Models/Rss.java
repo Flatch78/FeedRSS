@@ -1,9 +1,8 @@
 package Models;
 
+import Controllers.ManageRss.ViewRss;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.data.annotation.Id;
-import sun.rmi.runtime.Log;
-
-import java.util.Date;
 
 /**
  * Created by flatch on 20/01/17.
@@ -11,10 +10,11 @@ import java.util.Date;
 public class Rss {
 
 	@Id
-	String id;
-	String title;
-	String url;
-	String comment;
+	private String id;
+
+	private String title;
+	private String url;
+	private String comment;
 
 	public String getId() {
 			return this.id;
@@ -44,25 +44,5 @@ public class Rss {
 		this.comment = comment;
 	}
 
-//	public void setCreatedDate(Date createdDate) {
-//		this.createdDate = createdDate;
-//	}
-//	public Date getCreatedDate() {
-//		return createdDate;
-//	}
 
-
-	Rss(String url) {
-		System.out.println("constructor");
-		this.url = url;
-	}
-
-	Rss() { }
-
-/*	@Override
-	public String toString() {
-		return String.format(
-				"rss:{id:\"%s\",url:\"%s\"}",
-				this.id, this.url);
-	}*/
 }

@@ -16,4 +16,7 @@ public interface RssRepository extends MongoRepository<Rss, String> {
     Rss findById(@Param("id") String id);
     List<Rss> findByUrl(@Param("url") String url);
 
+    Long deleteById(@Param("id") String id);
+    Long deleteRssById(@Param("id") String id);
+
 }
