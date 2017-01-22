@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/FeedRSS.iml" filepath="$PROJECT_DIR$/.idea/FeedRSS.iml" />
       <module fileurl="file://$PROJECT_DIR$/rssfeedaggregatorapi.iml" filepath="$PROJECT_DIR$/rssfeedaggregatorapi.iml" />
     </modules>
   </component>
