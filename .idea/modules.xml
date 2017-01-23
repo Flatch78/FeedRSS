@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/feedrss.iml" filepath="$PROJECT_DIR$/feedrss.iml" />
       <module fileurl="file://$PROJECT_DIR$/rssfeedaggregatorapi.iml" filepath="$PROJECT_DIR$/rssfeedaggregatorapi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rssfeedaggregatorapi.iml" filepath="$PROJECT_DIR$/rssfeedaggregatorapi.iml" />
     </modules>
   </component>
 </project>
