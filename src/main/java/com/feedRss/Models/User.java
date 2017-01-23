@@ -1,21 +1,32 @@
-package Models;
+package com.feedRss.Models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 /**
  * Created by leo on 19/01/2017.
  */
 public class User {
+
     @Id
-    private Long id;
+    private String id;
 
     private String firstName;
     private String lastName;
 
-    public Long getId() {
+    public User() {}
+
+    public User(String id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -34,6 +45,7 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 
     @Override
     public String toString() {

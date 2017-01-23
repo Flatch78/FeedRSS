@@ -1,4 +1,4 @@
-package Controllers.ManageRss;
+package com.feedRss.Controllers.ManageRss;
 
 /**
  * Created by flatch on 22/01/17.

@@ -1,6 +1,6 @@
-package Controllers;
+package com.feedRss.Dao;
 
-import Models.Rss;
+import com.feedRss.Models.Rss;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

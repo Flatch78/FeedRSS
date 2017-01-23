@@ -1,4 +1,4 @@
-package Controllers.ManageRss;
+package com.feedRss.Controllers.ManageRss;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.syndication.feed.synd.SyndEnclosureImpl;

@@ -1,10 +1,10 @@
-package Controllers;
+package com.feedRss.Controllers;
 
-import Controllers.ManageRss.ContentRss;
-import Controllers.ManageRss.RssReader;
-import Models.Rss;
+import com.feedRss.Controllers.ManageRss.ContentRss;
+import com.feedRss.Controllers.ManageRss.RssReader;
+import com.feedRss.Dao.RssRepository;
+import com.feedRss.Models.Rss;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
