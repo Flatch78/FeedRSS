@@ -39,8 +39,9 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
-    public void deleteUserById(@PathVariable("id") String id) {
+    public String deleteUserById(@PathVariable("id") String id) {
         userRepository.delete(id);
+        return "{ success:true }";
     }
 
     @ResponseBody
