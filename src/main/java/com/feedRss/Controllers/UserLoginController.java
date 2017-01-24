@@ -38,7 +38,8 @@ public class UserLoginController {
             throw new ServletException("Invalid login");
         }
 
-        String token = Jwts.builder().setSubject(login.password).signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+        String token = Jwts.builder().setSubject(login.name+login.password)
+                .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
         User user = new User();
         user.setLastName(login.name);
         user.setToken(token);
@@ -51,7 +52,7 @@ public class UserLoginController {
     public User login(@RequestBody UserLogin login) throws ServletException {
         if (login.name == null || userRepository.findByLastName(login.name).size() == 0)
             throw new ServletException("Invalid login/password");
-        String token = Jwts.builder().setSubject(login.password)
+        String token = Jwts.builder().setSubject(login.name+login.password)
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
         if (login.password == null || !userRepository.findByLastName(login.name).get(0).getToken().contains(token))
