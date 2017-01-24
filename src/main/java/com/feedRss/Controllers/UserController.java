@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,11 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> users = new ArrayList<>();
+        users = userRepository.findAll();
+        for (int i = 0; i < users.size(); i++)
+            users.get(i).setToken("");
+        return users;
     }
 
     @ResponseBody
@@ -48,6 +53,7 @@ public class UserController {
     @RequestMapping(value = "/users/me", method = RequestMethod.GET)
     public User getUser(@RequestHeader String token) {
         User user = userRepository.findByToken(token);
+        user.setToken("");
         return user;
     }
 }
