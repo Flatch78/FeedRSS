@@ -1,9 +1,13 @@
 package com.feedRss;
 
+import com.feedRss.Security.JwtFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 /**
  * Created by leo on 19/01/2017.
  */
@@ -12,13 +16,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MainLauncher {
 
 
-/*
-    @ResponseBody
-    @RequestMapping("/")
-    public String home() {
-        return "Hello mister guillaume this is a working API <3";
+    @Bean
+    public FilterRegistrationBean jwtFilter() {
+        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new JwtFilter());
+        registrationBean.addUrlPatterns("/api/*");
+
+        return registrationBean;
     }
-*/
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MainLauncher.class, args);

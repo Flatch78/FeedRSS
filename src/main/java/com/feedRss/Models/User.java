@@ -13,12 +13,12 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String token;
 
     public User() {}
 
-    public User(String id, String firstName, String lastName) {
+    public User(String id, String lastName) {
         this.id = id;
-        this.firstName = firstName;
         this.lastName = lastName;
     }
 
@@ -46,6 +46,13 @@ public class User {
         this.lastName = lastName;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return this.token;
+    }
 
     @Override
     public String toString() {

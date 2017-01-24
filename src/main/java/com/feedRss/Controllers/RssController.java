@@ -14,6 +14,7 @@ import java.util.List;
  * Created by flatch on 20/01/17.
  */
 @Controller
+@RequestMapping("/api")
 public class RssController {
 
 	@Autowired

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by edouard on 22/01/17.
  */
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -27,25 +27,25 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "users/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable("id") String id) {
         return userRepository.findById(id);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "users/{id}", method = RequestMethod.DELETE)
     public void deleteUserById(@PathVariable("id") String id) {
         userRepository.delete(id);
     }
 
     @ResponseBody
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "users/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addUser(@RequestBody User user) {
         userRepository.insert(user);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/me", method = RequestMethod.GET)
+    @RequestMapping(value = "users/me", method = RequestMethod.GET)
     public User getUser(@RequestHeader String id) {
         return userRepository.findById(id);
     }
