@@ -20,12 +20,12 @@ public class JwtFilter extends GenericFilterBean {
                          final FilterChain chain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) req;
 
-        final String authHeader = request.getHeader("Authorization");
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        final String authHeader = request.getHeader("token");
+        if (authHeader == null) {
             throw new ServletException("Missing or invalid Authorization header.");
         }
 
-        final String token = authHeader.substring(7);
+        final String token = authHeader;
 
         try {
             final Claims claims = Jwts.parser().setSigningKey("secretkey")

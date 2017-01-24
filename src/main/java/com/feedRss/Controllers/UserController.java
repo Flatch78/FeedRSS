@@ -46,8 +46,8 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "users/me", method = RequestMethod.GET)
-    public User getUser(@RequestHeader String id) {
-        return userRepository.findById(id);
+    public User getUser(@RequestHeader String token) {
+        return userRepository.findByToken(token);
     }
 }
 
