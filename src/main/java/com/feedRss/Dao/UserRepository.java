@@ -12,13 +12,13 @@ import java.util.List;
  * Created by leo on 19/01/2017.
  */
 @RequestMapping("/api")
-@RepositoryRestResource(collectionResourceRel = "users", path = "users")
+@RepositoryRestResource(collectionResourceRel = "users", path = "user"/*, exported = false*/)
 public interface UserRepository extends MongoRepository<User, String> {
 
-    List<User> findByLastName(@Param("name") String name);
+    List<User> findByName(@Param("name") String name);
     List<User> findAll();
     User findById(@Param("id") String id);
     User findByToken(@Param("token") String token);
-    void delete(@Param("id") String id);
+    void deleteByToken(@Param("token") String token);
     User insert(@Param("user") User user);
 }

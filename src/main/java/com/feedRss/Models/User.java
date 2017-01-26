@@ -12,8 +12,7 @@ public class User {
     @Id
     private String id;
 
-    private String firstName;
-    private String lastName;
+    private String name;
     private String token;
     private ArrayList<String> rssId;
 
@@ -21,9 +20,9 @@ public class User {
         this.rssId = new ArrayList<>();
     }
 
-    public User(String id, String lastName) {
+    public User(String id, String name) {
         this.id = id;
-        this.lastName = lastName;
+        this.name = name;
         this.rssId = new ArrayList<>();
     }
 
@@ -35,20 +34,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<String> getRss() {
@@ -75,14 +66,4 @@ public class User {
         this.token = token;
     }
 
-
-
-    @Override
-    public String toString() {
-        return "User {" +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName +
-                "\'" + rssId +
-                "}";
-    }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +27,15 @@ public class RssController {
 
 	@ResponseBody
 	@RequestMapping(value = "/rss", method = RequestMethod.GET)
-	List<Rss> getFeedInRss() {
-		return rssRepository.findAll();
+	List<Rss> getListRss(@RequestHeader String token) {
+		User user = userRepository.findByToken(token);
+		List<Rss> listRss = new ArrayList<>();
+		if (rssRepository.findAll().size() > 0) {
+			for (String id : user.getRss()) {
+				listRss.add(rssRepository.findById(id));
+			}
+		}
+		return listRss;
 	}
 
 	@ResponseBody

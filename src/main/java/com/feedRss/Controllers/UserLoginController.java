@@ -27,18 +27,17 @@ public class UserLoginController {
     @Autowired
     private UserRepository userRepository;
 
-
     @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User register(@RequestBody UserLogin login) throws ServletException {
-        if (login.name == null || userRepository.findByLastName(login.name).size() > 0) {
+        if (login.name == null || userRepository.findByName(login.name).size() > 0) {
             throw new ServletException("Invalid login");
         }
 
         String token = Jwts.builder().setSubject(login.name+login.password)
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
         User user = new User();
-        user.setLastName(login.name);
+        user.setName(login.name);
         user.setToken(token);
         userRepository.insert(user);
         return user;
@@ -47,15 +46,15 @@ public class UserLoginController {
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User login(@RequestBody UserLogin login) throws ServletException {
-        if (login == null || login.name == null || userRepository.findByLastName(login.name).size() == 0)
+        if (login == null || login.name == null || userRepository.findByName(login.name).size() == 0)
             throw new ServletException("Invalid login/password");
         String token = Jwts.builder().setSubject(login.name+login.password)
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
-        if (login.password == null || !userRepository.findByLastName(login.name).get(0).getToken().contains(token))
+        if (login.password == null || !userRepository.findByName(login.name).get(0).getToken().contains(token))
             throw new ServletException("Invalid login/password");
 
-        return userRepository.findByLastName(login.name).get(0);
+        return userRepository.findByName(login.name).get(0);
     }
 
     @SuppressWarnings("unused")
