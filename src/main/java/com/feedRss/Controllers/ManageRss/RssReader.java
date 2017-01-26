@@ -59,8 +59,6 @@ public class RssReader  {
 		} catch (Exception e) {
 			logger.error("afterPropertiesSet Problem while retrieving feed", e);
 		}
-		String response = "";
-		logger.info("Url: " + url);
 		SyndFeed syndFeed = obtainFeedItems(url);
 
 		syndFeed.getModules();

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by leo on 19/01/2017.
  */
-@RepositoryRestResource(collectionResourceRel = "rss", path = "rss")
+@RepositoryRestResource(collectionResourceRel = "rss", path = "rss", exported = false)
 public interface RssRepository extends MongoRepository<Rss, String> {
 
     Rss findById(@Param("id") String id);
