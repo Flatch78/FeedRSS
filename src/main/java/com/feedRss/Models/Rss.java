@@ -1,7 +1,5 @@
-package Models;
+package com.feedRss.Models;
 
-import Controllers.ManageRss.ViewRss;
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.data.annotation.Id;
 
 /**

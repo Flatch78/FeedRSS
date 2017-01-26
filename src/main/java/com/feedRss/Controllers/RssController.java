@@ -1,28 +1,41 @@
-package Controllers;
+package com.feedRss.Controllers;
 
-import Controllers.ManageRss.ContentRss;
-import Controllers.ManageRss.RssReader;
-import Models.Rss;
+import com.feedRss.Controllers.ManageRss.ContentRss;
+import com.feedRss.Controllers.ManageRss.RssReader;
+import com.feedRss.Dao.RssRepository;
+import com.feedRss.Dao.UserRepository;
+import com.feedRss.Models.Rss;
+import com.feedRss.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by flatch on 20/01/17.
  */
 @Controller
+@RequestMapping("/api")
 public class RssController {
 
 	@Autowired
 	private RssRepository rssRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	@ResponseBody
 	@RequestMapping(value = "/rss", method = RequestMethod.GET)
-	List<Rss> getFeedInRss() {
-		return rssRepository.findAll();
+	List<Rss> getListRss(@RequestHeader String token) {
+		User user = userRepository.findByToken(token);
+		List<Rss> listRss = new ArrayList<>();
+		if (rssRepository.findAll().size() > 0) {
+			for (String id : user.getRss()) {
+				listRss.add(rssRepository.findById(id));
+			}
+		}
+		return listRss;
 	}
 
 	@ResponseBody
@@ -34,8 +47,11 @@ public class RssController {
 
 	@ResponseBody
 	@RequestMapping(value = "/rss", method = RequestMethod.POST)
-	Rss addFeedInRss(@RequestBody Rss rss) {
+	Rss addFeedInRss(@RequestBody Rss rss, @RequestHeader String token) {
 		rssRepository.save(rss);
+		User user = userRepository.findByToken(token);
+		user.addRss(rss.getId());
+		userRepository.save(user);
 		return rss;
 	}
 
@@ -61,7 +77,10 @@ public class RssController {
 
 	@ResponseBody
 	@RequestMapping(value = "/rss/{id}", method = RequestMethod.DELETE)
-	String removeFeedInRss(@PathVariable String id) {
+	String removeFeedInRss(@PathVariable String id, @RequestHeader String token) {
+		User user = userRepository.findByToken(token);
+		user.removeRss(id);
+		userRepository.save(user);
 		return "{ success:"
 				+ (rssRepository.deleteById(id) == 1 ? "true" : "false")
 				+ "}";
