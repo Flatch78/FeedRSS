@@ -1,22 +1,19 @@
 package com.feedRss.Controllers;
 
-import javax.servlet.ServletException;
-
+import com.feedRss.Dao.UserRepository;
 import com.feedRss.Models.User;
 import com.feedRss.Models.UserLogin;
-
-import com.feedRss.Dao.UserRepository;
-
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.ServletException;
 
 
 /**
@@ -50,7 +47,7 @@ public class UserLoginController {
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User login(@RequestBody UserLogin login) throws ServletException {
-        if (login.name == null || userRepository.findByLastName(login.name).size() == 0)
+        if (login == null || login.name == null || userRepository.findByLastName(login.name).size() == 0)
             throw new ServletException("Invalid login/password");
         String token = Jwts.builder().setSubject(login.name+login.password)
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();

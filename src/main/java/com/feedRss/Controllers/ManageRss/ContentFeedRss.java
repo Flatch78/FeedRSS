@@ -44,7 +44,7 @@ public class ContentFeedRss {
 				feedEntry.getPublishedDate());
 	}
 
-	public ContentFeedRss(String title, String description,
+	private ContentFeedRss(String title, String description,
 				   String url, String urlImage,
 				   String author, Date publishedDate) {
 		this.title = title;

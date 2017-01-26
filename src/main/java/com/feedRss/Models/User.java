@@ -1,6 +1,5 @@
 package com.feedRss.Models;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
@@ -83,6 +82,7 @@ public class User {
         return "User {" +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName +
-                "\'}";
+                "\'" + rssId +
+                "}";
     }
 }

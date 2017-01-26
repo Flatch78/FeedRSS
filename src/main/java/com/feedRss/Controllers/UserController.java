@@ -1,7 +1,9 @@
 package com.feedRss.Controllers;
 
+import com.feedRss.Dao.RssRepository;
 import com.feedRss.Dao.UserRepository;
 
+import com.feedRss.Models.Rss;
 import com.feedRss.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,6 +22,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RssRepository rssRepository;
 
     @ResponseBody
     @RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -56,6 +60,18 @@ public class UserController {
         User user = userRepository.findByToken(token);
         user.setToken("");
         return user;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/users/rss", method = RequestMethod.GET)
+    public List<Rss> getUserRss(@RequestHeader String token) {
+        User user = userRepository.findByToken(token);
+        List<Rss> listRss = new ArrayList<>();
+        if (rssRepository.findAll().size() > 0) {
+            for (String id : user.getRss()) {
+                listRss.add(rssRepository.findById(id));
+            }
+        }
+        return listRss;
     }
 }
 
