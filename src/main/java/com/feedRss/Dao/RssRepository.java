@@ -1,6 +1,6 @@
-package Controllers;
+package com.feedRss.Dao;
 
-import Models.Rss;
+import com.feedRss.Models.Rss;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by leo on 19/01/2017.
  */
-@RepositoryRestResource(collectionResourceRel = "rss", path = "rss")
+@RepositoryRestResource(collectionResourceRel = "rss", path = "rss", exported = false)
 public interface RssRepository extends MongoRepository<Rss, String> {
 
     Rss findById(@Param("id") String id);

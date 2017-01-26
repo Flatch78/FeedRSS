@@ -1,4 +1,4 @@
-package Controllers.ManageRss;
+package com.feedRss.Controllers.ManageRss;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.syndication.feed.synd.SyndEnclosureImpl;
@@ -44,7 +44,7 @@ public class ContentFeedRss {
 				feedEntry.getPublishedDate());
 	}
 
-	public ContentFeedRss(String title, String description,
+	private ContentFeedRss(String title, String description,
 				   String url, String urlImage,
 				   String author, Date publishedDate) {
 		this.title = title;

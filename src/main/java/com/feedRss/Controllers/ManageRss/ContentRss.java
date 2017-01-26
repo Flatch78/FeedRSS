@@ -1,4 +1,4 @@
-package Controllers.ManageRss;
+package com.feedRss.Controllers.ManageRss;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -13,17 +13,17 @@ import java.util.List;
 public class ContentRss {
 
 	@JsonView(ViewRss.Summary.class)
-	String title;
+	private String title;
 	@JsonView(ViewRss.Summary.class)
-	String url;
+	private String url;
 	@JsonView(ViewRss.Summary.class)
-	String author;
+	private String author;
 	@JsonView(ViewRss.Summary.class)
-	String description;
+	private String description;
 	@JsonView(ViewRss.Summary.class)
-	String titleImage;
+	private String titleImage;
 	@JsonView(ViewRss.Summary.class)
-	String urlImage;
+	private String urlImage;
 
 	@JsonView(ViewRss.Summary.class)
 	List<ContentFeedRss> feedrss;
@@ -38,7 +38,7 @@ public class ContentRss {
 
 	}
 
-	ContentRss(String title, String url, String author,
+	private ContentRss(String title, String url, String author,
 			   String description,
 			   String titleImage, String urlImage) {
 		this.title = title;
