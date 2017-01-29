@@ -37,6 +37,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD
+=======
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
@@ -69,6 +79,14 @@
             <artifactId>jjwt</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
+<<<<<<< HEAD
+=======
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
     </dependencies>
 
     <build>
