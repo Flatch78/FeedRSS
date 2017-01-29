@@ -38,7 +38,10 @@
             <scope>test</scope>
         </dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
 
         <dependency>
             <groupId>junit</groupId>
@@ -46,6 +49,9 @@
             <version>4.10</version>
         </dependency>
 
+<<<<<<< HEAD
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
+=======
 >>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
         <dependency>
             <groupId>rome</groupId>
@@ -80,12 +86,18 @@
             <version>${jjwt.version}</version>
         </dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+<<<<<<< HEAD
+>>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
+=======
 >>>>>>> 94ed24a9ecabb2a967d8711cd2f730bee4653698
     </dependencies>
 
