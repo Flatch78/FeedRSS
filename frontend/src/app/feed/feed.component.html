@@ -1,0 +1,19 @@
+<div class="feed-content">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="content.urlImage" class="feed-img-floating">
+        <img src="{{content.urlImage}}"/>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 *ngIf="content.category" class="feed-category">{{content.category}}</h2>
+      <h3 class="feed-title">{{content.title}}</h3>
+      <span *ngIf="content.author" class="feed-author"></span>
+      <span *ngIf="content.publishedDate" class="feed-date"></span>
+      <p class="description">{{content.description}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-primary link" (click)="openFeed()">VOIR L'ARTICLE COMPLET</button>
+  </div>
+</div>

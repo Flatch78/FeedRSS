@@ -1,0 +1,39 @@
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#">Mes feeds</a></li>
+            <li *ngFor="let channel of homeChannels">
+                {{ channel.title }}
+            </li>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+            <li><a href="#">Item 4</a></li>
+            <li class="bottom-new-feed" id="newfeed"><a (click)="modal.show()"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> Ajouter un nouveau feed</a></li>
+            <li class="bottom-logout"><a (click)="logout($event)">Se déconnecter</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <modal>
+            <div class="modal-header">
+                <h3>Ajoutez vos flux RSS ici !</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="feedinput">Url du flux :</label>
+                    <input (keypress)="onKey($event)" type="text" class="form-control" id="feedinput">
+                    <button (click)="newFeeds(feedSearch)"id="searchBtn" class="btn btn-primary">Rechercher</button>
+                </div>
+            </div>
+        </modal>
+        <div class="content">
+            <h2>Les articles récents</h2>
+            <ul>
+                <li *ngFor="let feed of homeFeeds">
+                    <feed [content]="feed"></feed>
+                </li>
+            </ul>
+            <feed [content]="test"></feed>
+        </div>
+    </div>
+</div>

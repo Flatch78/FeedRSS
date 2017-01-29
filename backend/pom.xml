@@ -4,15 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>rssfeedaggregatorapi</groupId>
-    <artifactId>rssfeedaggregatorapi</artifactId>
+    <artifactId>backend</artifactId>
+    <name>backend</name>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+        <groupId>rssfeedaggregatorapi</groupId>
+        <artifactId>rssfeedaggregatorapi</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <properties>
@@ -69,6 +68,12 @@
             <artifactId>jjwt</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
+        <dependency>
+            <groupId>rssfeedaggregatorapi</groupId>
+            <artifactId>frontend</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,16 +83,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>target/frontend</directory>
-                <targetPath>static</targetPath>
-            </resource>
-        </resources>
     </build>
-
-    <modules>
-        <module>frontend</module>
-        <module>backend</module>
-    </modules>
+    
 </project>

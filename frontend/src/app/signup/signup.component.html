@@ -1,0 +1,29 @@
+<div class="content-form">
+  <h2>Inscription</h2>
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['name'].valid && complexForm.controls['name'].touched}">
+      <label>Nom</label>
+      <input class="form-control" type="text" placeholder="Nom" [formControl]="complexForm.controls['name']">
+      <!-- The hasError method will tell us if a particular error exists -->
+      <div *ngIf="complexForm.controls['name'].hasError('required') && complexForm.controls['name'].touched" class="alert alert-danger">Vous devez remplir votre nom.</div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+      <label>Mot de passe</label>
+      <input class="form-control" type="password" placeholder="Mot de passe" [formControl]="complexForm.controls['password']">
+      <!-- The hasError method can work with the built in validators but custom validators as well -->
+      <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">Vous devez entrer un mot de passe.</div>
+      <div *ngIf="complexForm.controls['password'].hasError('minlength') && complexForm.controls['password'].touched" class="alert alert-danger">Votre mot de passe doit être plus long que 5 caractères.</div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['confirmPassword'].valid && complexForm.controls['confirmPassword'].touched}">
+      <label>Confirmation de mot de passe</label>
+      <input class="form-control" type="password" placeholder="Confirmation de mot de passe" [formControl]="complexForm.controls['confirmPassword']">
+      <!-- The hasError method can work with the built in validators but custom validators as well -->
+      <div *ngIf="complexForm.controls['confirmPassword'].hasError('required') && complexForm.controls['confirmPassword'].touched" class="alert alert-danger">Vous devez entrer un mot de passe.</div>
+      <div *ngIf="complexForm.controls['confirmPassword'].hasError('minlength') && complexForm.controls['confirmPassword'].touched" class="alert alert-danger">Votre mot de passe doit être plus long que 5 caractères.</div>
+    </div>
+    <div class="form-group">
+      <button id="signup-button" type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">S'inscrire</button>
+    </div>
+    <a class="redirect" [routerLink]="['/login']">Déjà inscrit ?</a>
+  </form>
+</div>

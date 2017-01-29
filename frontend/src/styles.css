@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.content-form {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    margin-top: 25vh;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #7b6dc0;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.redirect {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #7b6dc0;
+}
+
+.btn:hover {
+    background-color: #7b6dc0;
+    opacity: 0.65;
+}
+
+.btn[disabled]:hover {
+    background-color: #7b6dc0;
+}
